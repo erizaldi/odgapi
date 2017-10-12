@@ -5,12 +5,12 @@ var config = module.exports;
 
 config.db = {
     user: 'root',
-    password: '',
+    password: '!234Qwer',
     name: 'odgapi'
 };
 
 config.db.detail = {
-    host: 'localhost',
+    host: 'ec2-34-209-239-0.us-west-2.compute.amazonaws.com',
     port: 8889,
     dialect: 'mysql'
 };
