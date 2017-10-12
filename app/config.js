@@ -4,7 +4,7 @@
 var config = module.exports;
 
 config.db = {
-    user: 'root',
+    user: 'odgadmin',
     password: '!234Qwer',
     name: 'odgapi'
 };
