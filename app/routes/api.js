@@ -14,6 +14,7 @@ var config = require('../config'),
     GalleryController = require('../controllers/gallery.controller'),
     CareerController = require('../controllers/career.controller'),
     ArticleController = require('../controllers/article.controller'),
+    ManagementController = require('../controllers/management.controller'),
 
 
     AdminController = require('../controllers/adminController');
@@ -99,6 +100,15 @@ var APIRoutes = function(passport) {
     router.get('/articlestype/:id', ArticleController.getListArticle);
     router.put('/articles/:id', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.user, ArticleController.updateArticle));
     router.delete('/articles/:id', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.admin, ArticleController.deleteArticle));
+
+    //Management Routes
+    router.post('/managements', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.user, ManagementController.addManagement));
+    router.get('/managements', ManagementController.getAllManagement);
+    router.get('/managements/:id', ManagementController.getManagement);
+    router.get('/managementstype/:id', ArticleController.getListArticle);
+    router.put('/managements/:id', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.user, ManagementController.updateManagement));
+    router.delete('/managements/:id', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.admin, ManagementController.deleteManagement));
+
 
     // protect public folder (NOT FUNCTION YET -- TO FIX LATER)
     //  router.all('/../public/*', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.user));
