@@ -49,37 +49,9 @@ var modelDefinition = {
 
 };
 
-// 2: The model options.
-var modelOptions = {
-    instanceMethods: {
-        comparePasswords: comparePasswords
-    },
-    hooks: {
-        beforeValidate: hashPassword
-    }
-};
 
 // 3: Define the User model.
-var ServiceModel = db.define('service', modelDefinition, modelOptions);
+var ServiceModel = db.define('service', modelDefinition);
 
-// Compares two passwords.
-function comparePasswords(password, callback) {
-    bcrypt.compare(password, this.password, function(error, isMatch) {
-        if (error) {
-            return callback(error);
-        }
-
-        return callback(null, isMatch);
-    });
-}
-
-// Hashes the password for a user object.
-function hashPassword(user) {
-    if (user.changed('password')) {
-        return bcrypt.hash(user.password, 10).then(function(password) {
-            user.password = password;
-        });
-    }
-}
 
 module.exports = ServiceModel;

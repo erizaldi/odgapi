@@ -77,13 +77,13 @@ var ServiceController = {
         }
     },
 
-    // FUnction to update user
-    updateService(req, res) {
+    // FUnction to update project
+    updateProject(req, res) {
 
         const id = req.params.id;
-        const Service = req.body;
+        const data = req.body;
 
-        return Service.update(Service, { where: { id: id } })
+        return Service.update(data, { where: { id: id } })
             .then(function(success) {
                 if (success) {
                     res.json({ message: 'Service updated!' });
