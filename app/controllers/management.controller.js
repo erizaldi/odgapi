@@ -2,7 +2,7 @@
 
 var config = require('../config'),
     db = require('../services/database'),
-    Management = require('../models/aanagement');
+    Management = require('../models/management');
 
 // The user controller.
 var ManagementController = {
