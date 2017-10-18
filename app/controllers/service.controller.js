@@ -78,7 +78,7 @@ var ServiceController = {
     },
 
     // FUnction to update project
-    updateProject(req, res) {
+    updateService(req, res) {
 
         const id = req.params.id;
         const data = req.body;
