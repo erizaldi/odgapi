@@ -49,7 +49,7 @@ AuthController.authenticateUser = function(req, res) {
                 user.comparePasswords(password, function(error, isMatch) {
                     if (isMatch && !error) {
                         var token = jwt.sign({ username: user.username },
-                            config.keys.secret, { expiresIn: '30m' }
+                            config.keys.secret, { expiresIn: '120m' }
                         );
 
                         res.json({
