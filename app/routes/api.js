@@ -7,6 +7,7 @@ var config = require('../config'),
     UserController = require('../controllers/user.controller'),
     PostController = require('../controllers/post.controller'),
     ClientController = require('../controllers/client.controller'),
+    MarketController = require('../controllers/market.controller'),
     ServiceController = require('../controllers/service.controller'),
     GalleryController = require('../controllers/gallery.controller'),
     HeaderController = require('../controllers/header.controller'),
@@ -54,6 +55,14 @@ var APIRoutes = function(passport) {
     router.get('/clients/:id', ClientController.getClient);
     router.put('/clients/:id', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.user, ClientController.updateClient));
     router.delete('/clients/:id', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.admin, ClientController.deleteClient));
+
+    //Market Routes
+    router.post('/markets', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.user, MarketController.addMarket));
+    router.get('/markets', MarketController.getAllMarkets);
+    router.get('/markets/:id', MarketController.getMarket);
+    router.put('/markets/:id', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.user, MarketController.updateMarket));
+    router.delete('/markets/:id', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.admin, MarketController.deleteMarket));
+
 
     //Service Routes
     router.post('/services', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.user, ServiceController.addService));

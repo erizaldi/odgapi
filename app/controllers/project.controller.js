@@ -38,6 +38,29 @@ var ProjectController = {
         });
     },
 
+    //Get latest project
+    getProjectLast(req, res, next) {
+
+        Project.findAll({
+            limit: 1,
+            where: {
+                // No need yet
+            },
+            order: [
+                ['createdAt', 'DESC']
+            ]
+        }).then(function(project) {
+            if (project) {
+                res.json(project);
+            } else {
+                res.send(401, "project not found");
+            }
+        }, function(error) {
+            res.send("project not found");
+        });
+    },
+
+
     // add new projects
     addProject(req, res) {
         if (!req.body.name) {
