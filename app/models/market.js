@@ -2,9 +2,10 @@
 
 'use strict';
 var Sequelize = require('sequelize'),
+    bcrypt = require('bcrypt');
 
-    var config = require('../config'),
-        db = require('../services/database');
+var config = require('../config'),
+    db = require('../services/database');
 
 
 // 1: The model schema.
