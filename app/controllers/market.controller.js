@@ -2,7 +2,7 @@
 
 var config = require('../config'),
     db = require('../services/database'),
-    Market = require('../models/Market');
+    Market = require('../models/market');
 
 // The user controller.
 var MarketController = {
