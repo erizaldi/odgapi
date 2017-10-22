@@ -4,18 +4,18 @@
 var config = module.exports;
 
 config.db = {
-    // user: 'odgadmin',
-    // password: '!234Qwer',
-    // name: 'odgapi'
+    user: 'odgadmin',
+    password: '!234Qwer',
+    name: 'odgapi'
 
-    user: 'root',
-    password: '',
-    name: 'odgapi1'
+    // user: 'root',
+    // password: '',
+    // name: 'odgapi1'
 };
 
 config.db.detail = {
-    // host: 'ec2-34-209-239-0.us-west-2.compute.amazonaws.com',
-    host: 'localhost',
+    host: 'ec2-34-209-239-0.us-west-2.compute.amazonaws.com',
+    //    host: 'localhost',
     port: 8889,
     dialect: 'mysql'
 };
