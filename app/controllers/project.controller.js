@@ -38,14 +38,13 @@ var ProjectController = {
         });
     },
 
+
     //Get latest project
     getProjectLast(req, res, next) {
-
+        console.log(req.params.id)
         Project.findAll({
             limit: req.params.id,
-            where: {
-                // No need yet
-            },
+
             order: [
                 ['createdAt', 'DESC']
             ]
