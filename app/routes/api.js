@@ -91,6 +91,8 @@ var APIRoutes = function(passport) {
     router.post('/projects', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.user, ProjectController.addProject));
     router.get('/projects', ProjectController.getAllProjects);
     router.get('/projects/:id', ProjectController.getProject);
+    router.get('/projectListService/:id', ProjectController.getListProjectByService);
+    router.get('/projectListClient/:id', ProjectController.getListProjectByClient);
     router.get('/projectLast/:id', ProjectController.getProjectLast);
     router.put('/projects/:id', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.user, ProjectController.updateProject));
     router.delete('/projects/:id', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.admin, ProjectController.deleteProject));

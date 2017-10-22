@@ -39,7 +39,12 @@ var modelDefinition = {
 
     client: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: true
+    },
+
+    service: {
+        type: Sequelize.INTEGER,
+        allowNull: true
     },
 
     mapLatitude: {

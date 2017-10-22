@@ -39,6 +39,39 @@ var ProjectController = {
     },
 
 
+    //Get List of filtered Service
+    getListProjectByService(req, res) {
+        Project.findAll({
+            where: {
+                'service': req.params.id
+            }
+        }).then(function(project) {
+            if (project) {
+                res.json(project);
+            } else {
+                res.send(401, "project not found");
+            }
+        }, function(error) {
+            res.send("project not found");
+        });
+    },
+    //Get List of filtered Client
+    getListProjectByClient(req, res) {
+        Project.findAll({
+            where: {
+                'client': req.params.id
+            }
+        }).then(function(project) {
+            if (project) {
+                res.json(project);
+            } else {
+                res.send(401, "project not found");
+            }
+        }, function(error) {
+            res.send("project not found");
+        });
+    },
+
     //Get latest project
     getProjectLast(req, res, next) {
         console.log(req.params.id)
@@ -73,6 +106,7 @@ var ProjectController = {
                     picture: req.body.picture,
                     thumbnail: req.body.thumbnail,
                     client: req.body.client,
+                    service: req.body.service,
                     mapLatitude: req.body.mapLatitude,
                     mapLongitude: req.body.mapLongitude,
                     tags: req.body.tags
