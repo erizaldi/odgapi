@@ -53,6 +53,7 @@ var APIRoutes = function(passport) {
     router.post('/clients', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.user, ClientController.addClient));
     router.get('/clients', ClientController.getAllClients);
     router.get('/clients/:id', ClientController.getClient);
+    router.get('/clientList/:id', ClientController.getListClients);
     router.put('/clients/:id', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.user, ClientController.updateClient));
     router.delete('/clients/:id', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.admin, ClientController.deleteClient));
 

@@ -38,7 +38,7 @@ var modelDefinition = {
     },
 
     segment: {
-        type: Sequelize.STRING, //.ENUM("Mining", "Commercial", "Manufacturing", "Power", "Oil & Gas"),
+        type: Sequelize.STRING, 
         allowNull: false
     },
 

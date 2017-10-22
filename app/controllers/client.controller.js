@@ -38,6 +38,24 @@ var ClientController = {
         });
     },
 
+
+    //Get List of filtered clients
+    getListClients(req, res) {
+        Client.findAll({
+            where: {
+                'segment': req.params.id
+            }
+        }).then(function(clients) {
+            if (clients) {
+                res.json(clients);
+            } else {
+                res.send(401, "Clients not found");
+            }
+        }, function(error) {
+            res.send("Clients not found");
+        });
+    },
+
     // add new users
     addClient(req, res) {
         if (!req.body.name) {

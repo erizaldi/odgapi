@@ -42,7 +42,7 @@ var ProjectController = {
     getProjectLast(req, res, next) {
 
         Project.findAll({
-            limit: 1,
+            limit: req.params.id,
             where: {
                 // No need yet
             },
