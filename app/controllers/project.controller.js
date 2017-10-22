@@ -43,7 +43,7 @@ var ProjectController = {
     getProjectLast(req, res, next) {
         console.log(req.params.id)
         Project.findAll({
-            limit: req.params.id,
+            limit: parseInt(req.params.id),
 
             order: [
                 ['createdAt', 'DESC']
