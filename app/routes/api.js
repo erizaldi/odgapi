@@ -16,6 +16,7 @@ var config = require('../config'),
     CareerController = require('../controllers/career.controller'),
     ArticleController = require('../controllers/article.controller'),
     ManagementController = require('../controllers/management.controller'),
+    QuoteController = require('../controllers/quote.controller'),
 
 
     AdminController = require('../controllers/adminController');
@@ -121,6 +122,12 @@ var APIRoutes = function(passport) {
     router.get('/managementstype/:id', ArticleController.getListArticle);
     router.put('/managements/:id', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.user, ManagementController.updateManagement));
     router.delete('/managements/:id', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.admin, ManagementController.deleteManagement));
+
+    //Quote Routes
+    router.post('/quotes', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.user, QuoteController.addQuote));
+    router.get('/quotes', QuoteController.getAllQuote);
+    router.put('/quotes/:id', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.user, QuoteController.updateQuote));
+    router.delete('/quotes/:id', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.admin, QuoteController.deleteQuote));
 
 
     // protect public folder (NOT FUNCTION YET -- TO FIX LATER)
