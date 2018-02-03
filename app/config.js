@@ -14,8 +14,8 @@ config.db = {
 };
 
 config.db.detail = {
-    host: 'ec2-34-209-239-0.us-west-2.compute.amazonaws.com',
-    //    host: 'localhost',
+    // host: 'ec2-34-209-239-0.us-west-2.compute.amazonaws.com',
+    host: 'ec2-52-10-238-212.us-west-2.compute.amazonaws.com',
     port: 8889,
     dialect: 'mysql'
 };
