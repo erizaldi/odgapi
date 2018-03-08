@@ -17,6 +17,7 @@ var config = require('../config'),
     ArticleController = require('../controllers/article.controller'),
     ManagementController = require('../controllers/management.controller'),
     QuoteController = require('../controllers/quote.controller'),
+    MailController = require('../controllers/mail.controller'),
 
 
     AdminController = require('../controllers/adminController');
@@ -129,8 +130,8 @@ var APIRoutes = function(passport) {
     router.put('/quotes/:id', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.user, QuoteController.updateQuote));
     router.delete('/quotes/:id', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.admin, QuoteController.deleteQuote));
 
-
-    // protect public folder (NOT FUNCTION YET -- TO FIX LATER)
+    // EMail Routes
+    router.post('/email', MailController.sendMail);
     //  router.all('/../public/*', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.user));
 
     // Return value
